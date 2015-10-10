@@ -1,0 +1,37 @@
+{% extends "bookmarks/base_in.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="col-md-12"> <h4>{{ bookmark.url_desc }}</h4></div>
+    <div class="col-md-12">URL = <a href="{% url 'bookmarks:gotolink' bookmark.id %}">{{ bookmark.url }}</a></div>
+    <div class="col-md-12"> IP Adress = {{bookmark.url_ip}}</div>
+    <div class="col-md-12">Keywords = {{bookmark.url_keywords }}</div>
+    <div class="col-md-12">Access Count = {{ bookmark.accessCount }}</div>
+    <div class="col-md-12">Pub date  = {{ bookmark.pub_date }}</div>
+</div>
+
+<br/>&nbsp;
+
+<div class="container">
+  <div class="col-md-12"><b>Bookmark access info:</b></div>
+  {% for a in bookmark.sorted_by_count_reverse  %}
+  <div class="col-md-12">accessIP = {{ a.accessIP }}</div>
+  <div class="col-md-12">accessCount = {{ a.accessCount }} </div>
+  {% endfor %}
+</div>
+<br/>&nbsp;
+<div class="container">
+  <div class="col-md-12">
+    <a href="{% url 'bookmarks:index' %}">
+      <button class="btn btn-success">
+	All Bookmarks
+      </button>
+    </a>
+  </div>
+</div>
+
+<br>&nbsp;
+
+{% endblock %}

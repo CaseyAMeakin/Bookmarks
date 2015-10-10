@@ -1,0 +1,48 @@
+{% extends "bookmarks/base_in.html" %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="well well-sm" style="background-color: #ddeeff;"><b>Search terms:</b> {{ search_text }}
+    </div>
+  </div>
+</div>
+
+<h4>Results</h4>
+<!-- LIST BOOKMARKS -->
+{% if bookmarks %}
+<div class="container-fluid">
+  {% for bookmark in bookmarks %}
+  <div class="row">
+    <div class="well well-sm">
+      <a href="{% url 'bookmarks:gotolink' bookmark.id %}" target="_blank" >{{ bookmark.url_desc }}</a>
+      [<a href="{% url 'bookmarks:detail' bookmark.id %}">more</a>]
+      [<a href="{% url 'bookmarks:edit' bookmark.id %}">edit</a>]
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+<div class="well well-sm">
+  <p>No bookmarks available. Get browsing!</a></p>
+</div>
+{% endif %}
+
+<div class="container-fluid">
+  <div class="row">
+    <a href="{% url 'bookmarks:index' %}">
+      <button class="btn btn-success">
+	All Bookmarks
+      </button>
+    </a>
+  </div>
+</div>
+
+<br>&nbsp;
+
+
+
+{% endblock %}

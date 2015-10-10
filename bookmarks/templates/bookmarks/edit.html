@@ -1,0 +1,56 @@
+{% extends "bookmarks/base_in.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-12">
+    <h2>Edit bookmark data</h2>
+    <p>&nbsp;
+
+    <form action="{% url 'bookmarks:submitedit' bookmark.id %}" method="post">
+      {% csrf_token %}
+      
+      
+   <h4>URL</h4>
+      <div class="row">
+        <div class="col col-md-12">
+          <input type="text" value="{{bookmark.url}}" name="url"  class="form-control" >
+        </div>
+      </div>
+
+      <h4>Description</h4>
+      <div class="row">
+	<div class="col col-md-12">
+	  <input type="text" value="{{bookmark.url_desc}}" name="url_desc"  class="form-control" >
+	</div>
+      </div>
+      
+
+      <h4>Keywords</h4>
+      <div class="row">
+        <div class="col col-md-12">
+	  <input type="text" value="{{bookmark.url_keywords}}" name="url_keywords" class="form-control">
+        </div>
+      </div>
+
+
+      <p\>&nbsp;
+      <div>
+	<button type="submit" class="btn btn-success" value="submit">Submit</button>
+	<a href="{% url 'bookmarks:index' %}">
+	  <button type="button" class="btn btn-default">
+	    Never Mind
+          </button>
+	  </a>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+
+
+<br>&nbsp;
+
+
+{% endblock %}

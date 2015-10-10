@@ -1,0 +1,27 @@
+{% extends "bookmarks/base_in.html" %}
+
+
+{% block content %}
+<!-- ADD NEW BOOKMARK -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" >
+      <form action="{% url 'bookmarks:addlink' %}" method="post">
+	{% csrf_token %}
+	<input type="text" name="url"          class="form-control" placeholder="URL"> 
+	<input type="text" name="url_desc"     class="form-control" placeholder="Description">
+        <input type="text" name="url_keywords" class="form-control" placeholder="Keywords">
+	<button type="submit" class="btn btn-success">&nbsp;&nbsp; Submit &nbsp;&nbsp;</button>
+	<a href="{% url 'bookmarks:index' %}">
+          <button type="button" class="btn btn-default">
+            Never Mind
+          </button>
+	</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

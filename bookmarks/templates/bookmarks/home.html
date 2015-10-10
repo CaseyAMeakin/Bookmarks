@@ -1,0 +1,136 @@
+{% extends "bookmarks/base_in.html" %}
+
+
+{% block content %}
+
+{% if alertText %}
+
+<div class="container-fliud">
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <b>{{alertText }}</b>
+  </div>
+</div>
+
+{% endif %}
+
+
+{% if bedit %}
+
+<div class="container-fliud">
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Successfully updated bookmark <b>{{bedit.url_desc }}</b>
+  </div>
+</div>
+
+{% endif %}
+
+{% if b_to_delete  %}
+
+<div class="container-fliud">
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <a href="{% url 'bookmarks:bdelete' b_to_delete.id %}">
+      Click here to delete <b>{{ b_to_delete.url_desc }}</b>
+    </a>
+  </div>
+</div>
+
+{% endif %}
+
+
+{% if b_desc_deleted  %}
+
+<div class="container-fliud">
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Deleted <b>{{ b_desc_deleted }}</b>
+  </div>
+</div>
+
+{% endif %}
+
+
+
+
+<div class="container-fluid">
+
+  {% if bookmarks %}
+
+
+  <!-- SEARCH FORM -->
+  
+  <form action="{% url 'bookmarks:search' %}" method="get">
+    <div class="row">
+      <div class="col-md-6">
+	<!-- <h4>Search Bookmarks</h4> -->
+	<div id="searchBookmarks">
+	  <div class="input-group col-md-12">
+	    <input type="text" name="search_text" class="form-control input-lg" placeholder="Search terms"  />
+	    <span class="input-group-btn">
+	      <button class="btn btn-info btn-lg" type="submit">
+		<i class="glyphicon glyphicon-search"></i>
+	      </button>
+	    </span>
+	    
+	  </div>
+	</div>
+      </div>
+    </div>
+  </form>
+</div>
+  
+
+
+<!-- LIST BOOKMARKS -->
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-2"><h4>My Bookmarks</h4></div>
+  </div>
+
+  {% for bookmark in bookmarks %}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+	<a href="{% url 'bookmarks:gotolink' bookmark.id %}" target="_blank" >{{ bookmark.url_desc }}</a> 
+	[<a href="{% url 'bookmarks:detail' bookmark.id %}">info</a>]
+	[<a href="{% url 'bookmarks:edit' bookmark.id %}">edit</a>]
+	[<a href="{% url 'bookmarks:bdelete_chk' bookmark.id %}">delete</a>]
+      </div>
+    </div>
+  </div>
+  
+  {% endfor %}
+
+{% else %}
+  <div class="row">
+    <div class="col-md-2">
+      <div class="well well-sm">
+	<p>No bookmarks available. Get browsing!</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+<!-- ADD NEW BOOKMARK -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'bookmarks:enternew' %}">
+	<button class="btn btn-success">
+	  Add
+	</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<br\>&nbsp;
+
+{% endblock %}
