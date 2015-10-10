@@ -1,4 +1,6 @@
-This is a simple Django/SQLite3/Bootstrap.js website application to manage URL bookmarks. This was an excercise to develop a website from back to front.
+This is a simple Django/SQLite3/Bootstrap.js website application to manage URL bookmarks. 
+
+This was an excercise to develop a website from back to front in an afternoon.
 
 It features
 
