@@ -4,7 +4,7 @@ It features
 
 * Aesthetically pleasing UI on both desktop and mobile
 * Authenticated user handling
-* Search keyword list associated with each URL bookmarked
+* A keyword search feature
 * A database model that keeps track of bookmark usage (access information)
 * A front end designed using Django template inheritance and Bootstrap.js
 
