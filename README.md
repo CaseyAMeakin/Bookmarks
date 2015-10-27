@@ -7,7 +7,7 @@ It features
 * Aesthetically pleasing UI on both desktop and mobile
 * Authenticated user handling
 * A keyword search feature
-* A database model that keeps track of bookmark usage (access information)
+* A database model that keeps track of bookmark usage (access information): implemented with SQLite3 and PostgreSQL (can be used interchangably)
 * A front end designed using Django template inheritance and Bootstrap.js
 
 
