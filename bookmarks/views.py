@@ -10,7 +10,6 @@ import socket
 
 from .models import Bookmark
 
-# Create your views here.
 
 @login_required
 def gotolink(request,bookmark_id):
